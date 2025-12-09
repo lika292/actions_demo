@@ -1,4 +1,7 @@
+
+
 class Book:
+
     def __init__(self, title, author, year):
         self.__title = title
         self.__author = author
@@ -25,9 +28,11 @@ class Book:
 
     def __str__(self):
         return f"{self.__title} — {self.__author}, {self.__year} " \
-               f"({'доступна' if self.__available else 'занята'})"
+            f"({'доступна' if self.__available else 'занята'})"
+
 
 class PrintedBook(Book):
+
     def __init__(self, title, author, year, pages, condition):
         super().__init__(title, author, year)
         self.pages = pages
@@ -43,7 +48,9 @@ class PrintedBook(Book):
         base = super().__str__()
         return f"{base} | стр: {self.pages}, состояние: {self.condition}"
 
+
 class EBook(Book):
+
     def __init__(self, title, author, year, file_size, format):
         super().__init__(title, author, year)
         self.file_size = file_size
@@ -56,7 +63,9 @@ class EBook(Book):
         base = super().__str__()
         return f"{base} | файл: {self.file_size} МБ, формат: {self.format}"
 
+
 class User:
+
     def __init__(self, name):
         self.name = name
         self.__borrowed_books = []
@@ -86,7 +95,9 @@ class User:
     def get_borrowed_books(self):
         return tuple(self.__borrowed_books)
 
+
 class Librarian(User):
+
     def add_book(self, library, book):
         library.add_book(book)
 
@@ -96,7 +107,9 @@ class Librarian(User):
     def register_user(self, library, user):
         library.add_user(user)
 
+
 class Library:
+
     def __init__(self):
         self.__books = []
         self.__users = []
@@ -162,4 +175,3 @@ class Library:
             return
 
         user.return_book(book)
-
